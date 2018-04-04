@@ -1,0 +1,56 @@
+<p>
+  <strong>Nombre:</strong>
+  <%= @community.name %>
+</p>
+
+<p>
+  <strong>País:</strong>
+  <%= Country.find(Region.find(Location.find(@community.location_id).id).id).name %>
+</p>
+
+<p>
+  <strong>Region:</strong>
+  <%= Region.find(Location.find(@community.location_id).id).name %>
+
+</p>
+
+<p>
+  <strong>Comuna:</strong>
+  <%= Location.find(@community.location_id).name %>
+
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @community.status_id %>
+</p>
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Teléfono</th>
+    <th>E-Mail</th>
+    <th>Estado</th>
+    <th colspan="4"></th>
+  </tr>
+<h2>Vecinos de la comunidad</h2> <%= link_to 'Nuevo vecino', new_person_url(@community.id) %>
+
+<% @community.community_people.each do |community_person| %>
+<tr>
+    <th><%= person.name %></th>
+    <th><%= person.surname %></th>
+    <th><%= person.phone %></th>
+    <th><%= person.mail %></th>
+    <th><%= person.status %></th>
+
+
+<th><th><%= link_to 'Editar vecino', edit_community_community_neighbor_path(@community, community_neighbor) %><th>
+</tr>
+<% end %>
+</table>
+
+<td><%= link_to 'Editar', edit_community_path(@community) %></td>
+<td><%= link_to 'Borrar', community_path(@community),
+        method: :delete, data: { confirm: "¿Estás seguro de borrar?"}%></td>
+<td><%= link_to 'Volver', communities_path %></td>

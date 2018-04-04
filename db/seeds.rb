@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+  # Country.create(name:'Chile')
+  # Country.create(name:'Argentina')
+  # Region.create(name: 'Region Metropolitana', country_id: 1)
+  # Region.create(name: 'Provincia de Buenos Aires', country_id: 2)
+  # Location.create(name: 'La Pintana', region_id:2)
+  # Location.create(name: 'La Plata ', region_id:1)
