@@ -28,7 +28,9 @@ gem 'jbuilder', '~> 2.5'
 # Devise is a flexible authentication solution for Rails based on Warden.
 gem 'devise'
 
-gem 'bootstrap-sass'
+gem 'bootstrap', '~> 4.0.0'
+
+gem 'jquery-rails'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

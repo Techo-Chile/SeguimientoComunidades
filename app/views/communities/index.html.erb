@@ -12,9 +12,9 @@
   <% @communities.each do |community| %>
     <tr>
       <th><%= link_to community.name, community_path(community) %></th>
-      <th></th>
-      <th></th>
-      <th><%= community.location_id%></th>
+      <th><%= Country.find(Region.find(Location.find(community.location_id).region_id).country_id).name %></th>
+      <th><%= Region.find(Location.find(community.location_id).region_id).name %></th>
+      <th><%= Location.find(community.location_id).name%></th>
       <th><%= community.status_id%></th>
       <td><%= link_to 'Borrar', community_path(community),
               method: :delete,

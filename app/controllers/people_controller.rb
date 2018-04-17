@@ -1,4 +1,4 @@
-class PeopleController < ApplicationController
+  class PeopleController < ApplicationController
   def index
     @people = Person.all
   end
@@ -8,31 +8,26 @@ class PeopleController < ApplicationController
   end
 
   def new
-    @person = Person.new
+    @community = Community.find(params[:community_id])
   end
 
   def edit
-    @person = Person.find(params[:id])
+    @community = Community.find(params[:community_id])
+    @person = @community.people.find(params[:id])
   end
 
   def create
-    @person = Person.new(person_params)
-
-    if @person.save
-      redirect_to @community
-    else
-      render 'new'
-    end
+    @community = Community.find(params[:community_id])
+    @people = @community.people.create(person_params)
+    redirect_to @community
+    flash[:notice] = 'La persona ha sido creada'
   end
 
   def update
-    @person = Person.find(params[:id])
-
-    if @person.update(person_params)
-      redirect_to @person
-    else
-      render 'edit'
-    end
+    @community = Community.find(params[:community_id])
+    @person = @community.people.find(params[:id])
+    @person.update_attributes(person_params)
+    redirect_to @community
   end
 
   def destroy

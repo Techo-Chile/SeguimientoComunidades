@@ -5,19 +5,17 @@
 
 <p>
   <strong>País:</strong>
-  <%= Country.find(Region.find(Location.find(@community.location_id).id).id).name %>
+  <%= Country.find(Region.find(Location.find(@community.location_id).region_id).country_id).name %>
 </p>
 
 <p>
-  <strong>Region:</strong>
-  <%= Region.find(Location.find(@community.location_id).id).name %>
-
+  <strong>Dpto/Provincia/Region:</strong>
+  <%= Region.find(Location.find(@community.location_id).region_id).name %>
 </p>
 
 <p>
-  <strong>Comuna:</strong>
+  <strong>Comuna/Localidad/Municipio:</strong>
   <%= Location.find(@community.location_id).name %>
-
 </p>
 
 <p>
@@ -29,23 +27,51 @@
   <tr>
     <th>Nombre</th>
     <th>Apellido</th>
+    <th>Género</th>
     <th>Teléfono</th>
-    <th>E-Mail</th>
+    <th>Mail</th>
     <th>Estado</th>
     <th colspan="4"></th>
   </tr>
-<h2>Vecinos de la comunidad</h2> <%= link_to 'Nuevo vecino', new_person_url(@community.id) %>
+<h2>Vecinos de la comunidad</h2> <%= link_to 'Nuevo vecino', new_community_person_url(@community) %>
 
-<% @community.community_people.each do |community_person| %>
+<% @community.people.each do |person| %>
 <tr>
     <th><%= person.name %></th>
     <th><%= person.surname %></th>
+    <th><%= person.gender %></th>
     <th><%= person.phone %></th>
     <th><%= person.mail %></th>
-    <th><%= person.status %></th>
 
 
-<th><th><%= link_to 'Editar vecino', edit_community_community_neighbor_path(@community, community_neighbor) %><th>
+<th><th><%= link_to 'Editar vecino', edit_community_person_path(@community, person) %><th>
+</tr>
+<% end %>
+</table>
+
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Género</th>
+    <th>Teléfono</th>
+    <th>Mail</th>
+    <th>Estado</th>
+    <th colspan="4"></th>
+  </tr>
+<h2>Coordinadores de la comunidad</h2> <%= link_to 'Nuevo coordinador', new_community_person_url(@community) %>
+
+<% @community.people.each do |person| %>
+<tr>
+    <th><%= person.name %></th>
+    <th><%= person.surname %></th>
+    <th><%= person.gender %></th>
+    <th><%= person.phone %></th>
+    <th><%= person.mail %></th>
+
+
+<th><th><%= link_to 'Editar vecino', edit_community_person_path(@community, person) %><th>
 </tr>
 <% end %>
 </table>

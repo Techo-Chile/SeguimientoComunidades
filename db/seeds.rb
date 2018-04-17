@@ -11,3 +11,6 @@
   # Region.create(name: 'Provincia de Buenos Aires', country_id: 2)
   # Location.create(name: 'La Pintana', region_id:2)
   # Location.create(name: 'La Plata ', region_id:1)
+  # Location.create(name: 'Arrollito ', region_id:1)
+  # CommunityRole.create(name:"Voluntario")
+  # CommunityRole.create(name:"Vecino")
