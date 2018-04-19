@@ -1,2 +1,3 @@
 class CommunityRole < ApplicationRecord
+
 end

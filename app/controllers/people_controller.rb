@@ -4,7 +4,7 @@
   end
 
   def show
-    @person = Person.find(params[:id])
+    @person = Person.where(surname: 1)
   end
 
   def new
@@ -19,8 +19,8 @@
   def create
     @community = Community.find(params[:community_id])
     @people = @community.people.create(person_params)
-    redirect_to @community
     flash[:notice] = 'La persona ha sido creada'
+    redirect_to @community
   end
 
   def update

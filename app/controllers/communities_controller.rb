@@ -47,6 +47,6 @@ class CommunitiesController < ApplicationController
 
   private
   def community_params
-    params.require(:community).permit(:name, :location_id, :status_id, person_ids: [] )
+    params.require(:community).permit(:name, :location_id, :status_id, :person_rol_id )
   end
 end

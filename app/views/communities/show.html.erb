@@ -1,4 +1,4 @@
-<p>
+  <p>
   <strong>Nombre:</strong>
   <%= @community.name %>
 </p>
@@ -30,23 +30,26 @@
     <th>Género</th>
     <th>Teléfono</th>
     <th>Mail</th>
-    <th>Estado</th>
+    <th>Rol</th>
     <th colspan="4"></th>
   </tr>
 <h2>Vecinos de la comunidad</h2> <%= link_to 'Nuevo vecino', new_community_person_url(@community) %>
 
 <% @community.people.each do |person| %>
 <tr>
+  <% if CommunityPerson.find_by(person_id: person.id).person_rol_id == 2 %>
     <th><%= person.name %></th>
     <th><%= person.surname %></th>
     <th><%= person.gender %></th>
     <th><%= person.phone %></th>
     <th><%= person.mail %></th>
-
+    <th><%= CommunityRole.find(CommunityPerson.find_by(person_id: person.id).person_rol_id).name %></th>
 
 <th><th><%= link_to 'Editar vecino', edit_community_person_path(@community, person) %><th>
 </tr>
 <% end %>
+<% end %></td>
+
 </table>
 
 
@@ -57,23 +60,27 @@
     <th>Género</th>
     <th>Teléfono</th>
     <th>Mail</th>
-    <th>Estado</th>
+    <th>Rol</th>
     <th colspan="4"></th>
   </tr>
 <h2>Coordinadores de la comunidad</h2> <%= link_to 'Nuevo coordinador', new_community_person_url(@community) %>
 
 <% @community.people.each do |person| %>
 <tr>
+<% if CommunityPerson.find_by(person_id: person.id).person_rol_id == 1 %>
     <th><%= person.name %></th>
     <th><%= person.surname %></th>
     <th><%= person.gender %></th>
     <th><%= person.phone %></th>
     <th><%= person.mail %></th>
+    <th><%= CommunityRole.find(CommunityPerson.find_by(person_id: person.id).person_rol_id).name %></th>
 
 
 <th><th><%= link_to 'Editar vecino', edit_community_person_path(@community, person) %><th>
 </tr>
 <% end %>
+<% end %></td>
+
 </table>
 
 <td><%= link_to 'Editar', edit_community_path(@community) %></td>
