@@ -37,7 +37,6 @@
 
 <% @community.people.each do |person| %>
 <tr>
-  <% if CommunityPerson.find_by(person_id: person.id).person_rol_id == 2 %>
     <th><%= person.name %></th>
     <th><%= person.surname %></th>
     <th><%= person.gender %></th>
@@ -47,7 +46,6 @@
 
 <th><th><%= link_to 'Editar vecino', edit_community_person_path(@community, person) %><th>
 </tr>
-<% end %>
 <% end %></td>
 
 </table>

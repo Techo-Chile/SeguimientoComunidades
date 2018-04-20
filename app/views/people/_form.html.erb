@@ -9,7 +9,10 @@
   </p>
   <p>
     <%= f.label :"Género" %><br>
-    <%= f.text_field :gender %>
+    <%= f.select :gender, options_for_select([
+      ["Femenino", "Femenino", {:class=>"bold"}],
+      ["Masculino", "Masculino", {:class=>"bold"}] ]), {},
+      html_options = {:class => "listBox", :style=>"float:left;"} %><br>
   </p>
   <p>
     <%= f.label :"E-mail" %><br>
